@@ -100,4 +100,34 @@ public class MembersDAOImpl implements MembersDAO {
 		return sqlSession.selectOne("members.useridCheck",dto);
 	}
 
+	@Override
+	public List<MembersDTO> findId(MembersDTO dto) {
+		return sqlSession.selectList("members.findId",dto);
+	}
+
+	@Override
+	public int findIdCount(MembersDTO dto) {
+		return sqlSession.selectOne("members.findIdCount",dto);
+	}
+
+	@Override
+	public List<MembersDTO> findPw(MembersDTO dto) {
+		return sqlSession.selectList("members.findPw",dto);
+	}
+
+	@Override
+	public int findPwCount(MembersDTO dto) {
+		return sqlSession.selectOne("members.findPwCount",dto);
+	}
+
+	@Override
+	public List<MembersDTO> list2(String users_id) {
+		return sqlSession.selectList("members.list2",users_id);
+	}
+
+	@Override
+	public int countList(String users_id) {
+		return sqlSession.selectOne("members.countList",users_id);
+	}
+
 }

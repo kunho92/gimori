@@ -49,7 +49,7 @@ $(function() {
 	left: 0;
 	content: "";
 	background-repeat: repeat;
-	background-image: url('${path}/images/img.jpg');
+	background-image: url('${path}/images/배경화면후보2.jpg');
 	background-size: cover;
 	opacity: 0.2!important; filter:alpha(opacity=30);	
 	background-position: center;
@@ -91,27 +91,21 @@ td, th {
 	height: 30px;
 	transition: all 0.3s;
 }
-/* #content:hover {
-	background: rgb(248,248,248);
-	color: #FFF;
-	font-weight: bolder;
-	font-size: 1.5em;
-} */
 a.tooltips {
 	position: relative;
 	display: inline;
 }
-a.tooltips span {
+/* a.tooltips span {
 	position: relative;
 	width: 140px;
 	color: #FFFFFF;
-	background: #000000;
+	/* background: #000000; */
 	height: 30px;
 	line-height: 30px;
 	text-align: center;
 	display: none;
 	border-radius: 6px;
-}
+} */
 a.tooltips span:after {
 	content: '';
 	position: absolute;
@@ -154,13 +148,13 @@ input:focus {
 </head>
 <body>
 <%@ include file="../include/menu2.jsp" %>
+<div id="all">
 <table align="center" style="margin-top:100px">
 <tr><td><FONT face="Comic Sans MS" style="font-weight:bolder; font-size:3em; text-align:center;" align="center">
 <a href="${path}/memo/list.do" style="color:black; font-weight: bolder; text-decoration: none;">TIME_LINE</a></FONT>
 </td></tr>
 </table>
 <br><br><br><br>
-
 <div id="all">
 <form method="post" name="form1" action="${path}/memo/insert.do">
 	<table align="center" border="1" style="background:rgb(248,248,248); border-radius:5px; box-shadow:0 0 10px 15px rgb(248,248,248);">
@@ -177,27 +171,17 @@ input:focus {
 	<table id="table" class="table" align="center" style="width:900px; margin-top:10px; background:rgb(248,248,248); border-radius: 5px; box-shadow: 0 0 10px 50px rgb(248,248,248);">
 		<c:forEach items="${list}" var="row">
 			<tr align="center">
-				<td style="width:70px; font-size:1.1em; font-weight:bolder;">${row.name}</td>
+				<td style="width:110px; font-size:1.1em; font-weight:bolder;">${row.name}</td>
 				<td style="text-align:right; font-size:.7em; color:gray;">
 					<fmt:formatDate value="${row.post_date}" pattern="yyyy년 MM월 dd일" />&nbsp;&nbsp;
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" id="content" style="text-align:justify; padding-left:90px; padding-right:95px;">
+				<td colspan="2" id="content" style="text-align:justify; padding-left:110px; padding-right:95px;">
 						<a href="#" class="tooltips" onclick="memo_view('${row.idx}')">${row.memo}
 						</a><br><br><br><br>
 				</td>
 			</tr>
-<!-- 			<tr>
-				<td colspan="2" style="padding-left:90px;">
-					<input id="name" style="border-radius: 10px 0 0 10px; width: 90px;" placeholder=" 이름">
-					<input size="80" style="border-radius: 0 10px 10px 0;" placeholder=" 댓글은 여기다 써">
-					<input type="button" id="btnReply" style="border-radius: 10px 0 10px 0;" value="확인">
-				</td>
-			</tr>
-			<tr>
-				<td><div id="listReply"></div></td>
-			</tr> -->
 			<tr>
 				<td colspan="2"><hr></td>
 			</tr>
@@ -207,6 +191,7 @@ input:focus {
 		</tr>
 	</table>
 	<p>&nbsp;<p>&nbsp;
+</div>
 </div>
 </body>
 </html>

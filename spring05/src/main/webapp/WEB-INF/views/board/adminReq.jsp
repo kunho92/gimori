@@ -9,7 +9,7 @@
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
-<table border="1" width="600px" class="type08">
+<table align="center" border="1" width="600px" class="type08">
 <thead>
 	<tr>
 		<th>제목</th>

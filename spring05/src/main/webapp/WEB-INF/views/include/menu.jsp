@@ -43,7 +43,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                data-toggle="dropdown" role="button" aria-haspopup="true"
                aria-expanded="false">관리자용<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                 <li><a href="${path}/memo/list.do">타임라인관리</a></li>
+                 <li><a href="${path}/memo/adminList.do">타임라인관리</a></li>
                  <li><a href="${path}/board/adminList.do">페이지관리</a></li>
                  <li><a href="${path}/board/adminReq.do">페이지요청관리</a></li>
                  <li><a href="${path}/members/adminList.do">회원관리</a></li>
@@ -63,7 +63,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                  <li><a href="${path}/members/logout.do">로그아웃</a>
               </ul> 
             </li>
-            <img src="${path}/images/${sessionScope.image}" width="50px"  height="50px">
+            <li><img src="${path}/images/${sessionScope.image}" width="50px"  height="50px"></li>
          </ul>
          </c:if>
          

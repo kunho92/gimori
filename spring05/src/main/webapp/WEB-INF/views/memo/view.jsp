@@ -3,14 +3,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>수정/삭제</title>
+<title>상세보기</title>
 <%@ include file="../include/header2.jsp" %>
-<!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-
-<!-- include summernote css/js -->
 <link href="${path}/summernote/summernote.css" rel="stylesheet">
 <script src="${path}/summernote/summernote.js"></script>
 <script type="text/javascript">
@@ -44,7 +41,7 @@ $(function() {
 	left: 0;
 	content: "";
 	background-repeat: repeat;
-	background-image: url('${path}/images/img.jpg');
+	background-image: url('${path}/images/배경화면후보2.jpg');
 	background-size: cover;
 	opacity: 0.2!important; filter: alpha(opacity=30);	
 	background-position: center;
@@ -53,42 +50,36 @@ $(function() {
 .button {
 	border-radius: 10px 0 10px 0;
 }
-table {
-	margin-top: 200px;
-	border-radius: 5px;
-	background: rgb(248,248,248);
-	box-shadow: 0 0 10px 50px rgb(248,248,248);
-}
 </style>
 </head>
 <body>
 <%@ include file="../include/menu2.jsp" %>
 <div id="all">
 <form name="form1" method="post">
-	<table align="center">
+	<table align="center" style="margin-bottom:100px; margin-top:200px; border-radius:5px; background:rgb(248,248,248); box-shadow:0 0 10px 50px rgb(248,248,248);">
 		<tr>
-			<td><input name="userid" value="${dto.userid}" readonly></td>
+			<td style="font-weight: bolder; font-size:1.3em;">${dto.name}
+			<input type="hidden" name="userid" value="${dto.userid}">
+				<em style="font-size:.7em; font-style:normal; color:rgb(223,223,223);">님께서 작성하신 글입니다.</em></td>
 		</tr>
 		<tr><td colspan="2" style="font-size:.1em;">&nbsp;</td></tr>
 		<tr>
 		<c:if test="${sessionScope.userid == dto.userid}">
 			<td><textarea rows="5" cols="70" name="memo" id="memo">${dto.memo}</textarea></td>
-			</c:if>
-			<c:if test="${sessionScope.userid != dto.userid}">
-			<td><textarea rows="5" cols="70" name="memo" id="memo" readonly>${dto.memo}</textarea></td>
-			</c:if>
+		</c:if>
+		<c:if test="${sessionScope.userid != dto.userid}">
+			<td style="vertical-align:top; border:1px solid black; width:800px; height:400px; padding:10px;">${dto.memo}</td>
+		</c:if>
 		</tr>
+		<tr><td colspan="2" style="font-size:.1em;">&nbsp;</td></tr>
 		<tr align="center">
 			<td colspan="2" align="right">
 				<input type="hidden" name="idx" value="${dto.idx}">
 					<c:if test="${sessionScope.userid == dto.userid}">
-			<button type="button" class="button" id="btnUpdate">수정</button>
-			<button type="button" class="button" id="btnDelete">삭제</button>
-		</c:if>
-		<input class="button" type="button" value="목록" id="btnCancle">
-<!-- 				<input class="button" type="button" value="수정" id="btnUpdate">
-				<input class="button" type="button" value="삭제" id="btnDelete">
-				<input class="button" type="button" value="목록" id="btnCancle"> -->
+						<input class="button" type="button" value="수정" id="btnUpdate">
+						<input class="button" type="button" value="삭제" id="btnDelete">
+					</c:if>
+				<input class="button" type="button" value="목록" id="btnCancle">
 			</td>
 		</tr>
 	</table>

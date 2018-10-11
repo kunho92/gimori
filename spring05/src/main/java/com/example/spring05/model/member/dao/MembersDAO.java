@@ -23,5 +23,11 @@ public interface MembersDAO {
 	public void delete(MembersDTO dto);
 	public List<MembersDTO> listAll(String keyword);
 	public int useridCheck(MembersDTO dto);
+	public List<MembersDTO> findId(MembersDTO dto);
+	public int findIdCount(MembersDTO dto);
+	public List<MembersDTO> findPw(MembersDTO dto);
+	public int findPwCount(MembersDTO dto);
+	public List<MembersDTO> list2(String users_id);
+	public int countList(String users_id);
 
 }

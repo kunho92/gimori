@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listReply"
 		resultType="com.example.spring05.model.board.dto.ReplyDTO">
 		select rno,bno,replyer,regdate,updatedate,name,replytext
-		from reply r, member m
+		from reply r, members m
 		where r.replyer=m.userid and bno=#{bno}
 		order by rno
 	</select>

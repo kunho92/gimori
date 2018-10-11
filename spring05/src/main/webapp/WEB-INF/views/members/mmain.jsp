@@ -86,10 +86,25 @@
 {
 	background: #d0dafd;
 }
+#all:after {
+	width:100%;
+	height:100%;
+	z-index:-1;
+	position:fixed;
+	top:0;
+	left:0;
+	content:"";
+	background-repeat:repeat;
+	background-image: url('${path}/images/배경화면후보2.jpg');
+	background-size: cover;
+	opacity: 0.3!important; filter:alpha(opacity=30);	
+	background-position:center;
+	background-origin:content-box;
+}
 </style>
 <body>
 <%@ include file="../include/menu.jsp" %>
-<div class="container-fluid js-tm-page-content" data-page-no="3">
+<div id="all" class="container-fluid js-tm-page-content" data-page-no="3">
                             <div align="center">
                             <button class="button" onclick="list()">전체</button>
                             <button class="button" onclick="list_man()">남자</button>

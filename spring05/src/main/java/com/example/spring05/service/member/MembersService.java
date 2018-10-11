@@ -18,14 +18,20 @@ public interface MembersService {
 	public List<MembersDTO> list_man(String users_id);
 	public List<MembersDTO> list_woman(String users_id);
 	public void friendInsert(FriendListDTO dto);
-	List<FriendListDTO> friendRequest(String users_id);
+	public List<FriendListDTO> friendRequest(String users_id);
 	int friendCount(String users_id);
 	public void friendDelete(FriendListDTO dto);
-	public void updateMembers(MembersDTO dto);
-	List<MembersDTO> adminList(String userid);
+	public void updateMembers(MembersDTO dto,HttpSession session);
+	public List<MembersDTO> adminList(String userid);
 	public void delete(MembersDTO dto);
-	List<MembersDTO> listAll(String keyword);
+	public List<MembersDTO> listAll(String keyword);
 	public int useridCheck(MembersDTO dto);
+	public List<MembersDTO> findId(MembersDTO dto);
+	public int findIdCount(MembersDTO dto);
+	public List<MembersDTO> findPw(MembersDTO dto);
+	public int findPwCount(MembersDTO dto);
+	public List<MembersDTO> list2(String users_id);
+	public int countList(String users_id);
 
 
 }

@@ -26,13 +26,12 @@ function list(page){
 	left:0;
 	content:"";
 	background-repeat:repeat;
-	background-image: url('../images/12.jpg');
+	background-image: url('${path}/images/배경화면후보2.jpg');
 	background-size: cover;
 	opacity: 0.3!important; filter:alpha(opacity=30);	
 	background-position:center;
 	background-origin:content-box;
 }
-
 table.type08 {
     border-collapse: collapse;
     text-align: left;

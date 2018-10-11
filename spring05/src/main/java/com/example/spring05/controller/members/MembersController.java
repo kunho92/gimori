@@ -3,6 +3,7 @@ package com.example.spring05.controller.members;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -105,7 +106,7 @@ public class MembersController {
 		ModelAndView mav=new ModelAndView();
 		List<MembersDTO> list=membersService.listAll(keyword);
 		mav.addObject("list", list);
-		mav.setViewName("members/mmain");
+		mav.setViewName("members/admin_mmain");
 		return mav;
 	}
 	
@@ -113,7 +114,13 @@ public class MembersController {
 	public ModelAndView list(HttpSession session){
 		String users_id=(String)session.getAttribute("userid");
 		ModelAndView mav=new ModelAndView();
-		List<MembersDTO> list=membersService.list(users_id);
+		int count=membersService.countList(users_id);
+		List<MembersDTO> list;
+		if(count == 0) {
+			list=membersService.list2(users_id);
+		}else {
+			list=membersService.list(users_id);
+		}
 		mav.addObject("list",list);
 		mav.setViewName("members/mmain");
 		return mav;
@@ -214,7 +221,7 @@ public class MembersController {
 		}
 		
 		@RequestMapping("updateMembers.do")
-		public String updateMembers(MembersDTO dto) {
+		public String updateMembers(MembersDTO dto,HttpSession session) {
 			String filename="-";
 			//새로운 첨부 파일이 있으면
 			if(!dto.getFile1().isEmpty()) {
@@ -237,7 +244,7 @@ public class MembersController {
 				dto.setImage(dto2.getImage());
 			}
 			//상품정보 수정
-			membersService.updateMembers(dto);
+			membersService.updateMembers(dto,session);
 			return "redirect:/main/main.do";
 		}
 		
@@ -249,5 +256,36 @@ public class MembersController {
 			return "redirect:/members/adminList.do";
 		}//detail()
 		
+		@RequestMapping("popId.do")
+		public String popId() {
+			return "windows/popId";
+		}
+		@RequestMapping("popPw.do")
+		public String popPw() {
+			return "windows/popPw";
+		}
+		
+		@RequestMapping("findId.do")
+		public ModelAndView findId(MembersDTO dto,ModelAndView mav) {
+			List<MembersDTO> list=membersService.findId(dto);
+			int count=membersService.findIdCount(dto);
+			Map<String,Object> map=new HashMap<>();
+			map.put("list", list);
+			map.put("count", count);
+			mav.addObject("map",map);
+			mav.setViewName("windows/findId");
+			return mav;
+		}
+			@RequestMapping("findPw.do")
+		public ModelAndView findPw(MembersDTO dto,ModelAndView mav) {
+			List<MembersDTO> list=membersService.findPw(dto);
+			int count=membersService.findPwCount(dto);
+			Map<String,Object> map=new HashMap<>();
+			map.put("list", list);
+			map.put("count", count);
+			mav.addObject("map",map);
+			mav.setViewName("windows/findPw");
+			return mav;
+		}
 		
 }

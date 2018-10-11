@@ -10,16 +10,16 @@
 <script>
 	$(function() {
 		$("#btnLogin").click(function() {
-			var userid = $("#userids").val(); //태그의 value 속성값
-			var passwd = $("#passwds").val();
+			var userids = $("#userids").val(); //태그의 value 속성값
+			var passwds = $("#passwds").val();
 			if (userid == "") {
 				alert("아이디를 입력하세요.");
-				$("#userid").focus(); //입력 포커스 이동
+				$("#userids").focus(); //입력 포커스 이동
 				return; //함수 종료
 			}
 			if (passwd == "") {
 				alert("비밀번호를 입력하세요.");
-				$("#passwd").focus();
+				$("#passwds").focus();
 				return;
 			}
 			//폼 데이터를 서버로 제출
@@ -34,12 +34,12 @@
 			
 			if(userid == null || userid == ""){
 				alert("아이디를 입력하세요.");
-				userid.focus();
+				$("#userid").focus();
 				return;
 			}
 			 if(!exp1.test(userid)){
 				 alert("아이디는 영문자,숫자 4~16자리로 입력하세요.");
-				 userid.focus();
+				 $("#userid").focus();
 				 return;
 			 }
 			$.ajax({
@@ -50,6 +50,12 @@
 					  $("#panal").html(result);
 				}
 			});
+		});
+		$("#popId").click(function(){
+			window.open('${path}/members/popId.do','','width=500,height=400');
+		});
+        $("#popPw").click(function(){
+        	window.open('${path}/members/popPw.do','','width=500,height=400');
 		});
 	});
 
@@ -103,9 +109,9 @@
 	function passwdCheck() {
 		var passwd = $("#passwd").val();
 
-		var exp2 = /^[a-zA-z0-9]{8,}$/;
+		var exp2 = /^[a-zA-Z0-9]{4,}$/;
 		if (!exp2.test(passwd)) {
-			document.getElementById("passwdCheck").innerHTML = "영문자,숫자 8자리이상으로 입력하세요.";
+			document.getElementById("passwdCheck").innerHTML = "영문자,숫자 4자리이상으로 입력하세요.";
 			return;
 		} else if (exp2.test(passwd)) {
 			document.getElementById("passwdCheck").innerHTML = "유효한 비밀번호입니다.";
@@ -121,16 +127,6 @@
 		}
 		if (exp5.test(name)) {
 			document.getElementById("nameCheck").innerHTML = "유효한 이름입니다.";
-		}
-	}
-	function hpCheck() {
-		var hp = $("#hp").val();
-		var exp7 = /^[0]{1}[1]{1}[0]{1}-[0-9]{4}-[0-9]{4}$/;
-		if (!exp7.test(hp)) {
-			document.getElementById("hpCheck").innerHTML = "연락처 형식이 잘못 되었습니다.";
-		}
-		if (exp7.test(hp)) {
-			document.getElementById("hpCheck").innerHTML = "유효한 연락처입니다.";
 		}
 	}
 </script>
@@ -491,7 +487,7 @@ px
 
 	<section class="container" style="height: 700px;">
 		<article class="half">
-			<h1>Azure</h1>
+			<h1>FMOW</h1>
 			<div class="tabs">
 				<span class="tab signin active"><a href="#signin">로그인</a></span> <span
 					class="tab signup"><a href="#signup">회원가입</a></span>
@@ -504,7 +500,9 @@ px
 							name="passwd" id="passwds" required="required"
 							placeholder="Your password">
 						<td colspan="2" align="center"><input type="button"
-							id="btnLogin" value="로그인"> <c:if
+							id="btnLogin" value="로그인">
+							<button id="popId" type="button">아이디 찾기</button>
+							<button id="popPw" type="button">비밀번호 찾기</button> <c:if
 								test="${param.message == 'nologin' }">
 								<div style="color: red;">로그인 하신 후 사용하세요.</div>
 							</c:if> <c:if test="${message == 'error' }">
@@ -538,16 +536,16 @@ px
 						
 						</span><br> -->
 
-						<select name="tel1">
+						<select id="tel1" name="tel1">
 							<option value="010">010</option>
 						</select> - <input type="text" name="tel2" id="tel2" size="2"
 							required="required" maxlength="4"> - <input type="text"
 							name="tel3" id="tel3" size="2" required="required" maxlength="4"><br>
 
-						<input name="address1" id="address1" readonly size="10"> <input
+						<input name="address1" id="address1" readonly size="10" required="required"> <input
 							type="button" onclick="daumZipCode()" value="우편번호 찾기"> <input
-							name="address2" id="address2" size="34"><br> <input
-							name="address3" id="address3" placeholder="상세주소" size="34">
+							name="address2" id="address2" size="34" required="required"><br> <input
+							name="address3" id="address3" placeholder="상세주소" size="34" required="required">
 
 						<div class="submit-wrap">
 							<input type="submit" value="회원가입" class="submit"> <a

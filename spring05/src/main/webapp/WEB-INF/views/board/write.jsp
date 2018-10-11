@@ -31,6 +31,7 @@ $(function(){
 		//폼에 hidden 태그들을 붙임
 		$("#form1").append(str);
 		document.form1.submit();
+		alert("관리자 승인후 페이지가 개설됩니다.");
 	});
 	$(".fileDrop").on("dragenter dragover",function(e){
 		//기본 효과 막음
@@ -86,7 +87,7 @@ $(function() {
 </head>
 <body>
 <%@ include file="../include/menu2.jsp" %>
-<h2>글쓰기</h2>
+<h2>페이지 개설</h2>
 <form id="form1" name="form1" method="post"
 action="${path}/board/insert.do">
 	<div>제목 <input name="title" id="title" size="80"

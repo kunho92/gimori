@@ -92,7 +92,8 @@ public class MembersServiceImpl implements MembersService {
 	}
 
 	@Override
-	public void updateMembers(MembersDTO dto) {
+	public void updateMembers(MembersDTO dto,HttpSession session) {
+		session.setAttribute("image",dto.getImage());
 		membersDao.updateMembers(dto);
 		
 	}
@@ -116,6 +117,36 @@ public class MembersServiceImpl implements MembersService {
 	@Override
 	public int useridCheck(MembersDTO dto) {
 		return membersDao.useridCheck(dto);
+	}
+
+	@Override
+	public List<MembersDTO> findId(MembersDTO dto) {
+		return membersDao.findId(dto);
+	}
+
+	@Override
+	public int findIdCount(MembersDTO dto) {
+		return membersDao.findIdCount(dto);
+	}
+
+	@Override
+	public List<MembersDTO> findPw(MembersDTO dto) {
+		return membersDao.findPw(dto);
+	}
+
+	@Override
+	public int findPwCount(MembersDTO dto) {
+		return membersDao.findPwCount(dto);
+	}
+
+	@Override
+	public List<MembersDTO> list2(String users_id) {
+		return membersDao.list2(users_id);
+	}
+
+	@Override
+	public int countList(String users_id) {
+		return membersDao.countList(users_id);
 	}
 
 

@@ -31,6 +31,8 @@
 	mapping="/ckeditor/**"></resources>
 	<resources location="/WEB-INF/views/summernote/" 
 	mapping="/summernote/**"></resources>
+	<resources location="/WEB-INF/views/error/" 
+	mapping="/error/**"></resources>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -78,7 +80,10 @@
 	  <interceptor>
 	    <mapping path="/board/**" />
 	    <mapping path="/memo/**" />
+	    <mapping path="/main/**" />
 	    <mapping path="/members/list.do" />
+	    <mapping path="/members/detail/**" />
+	    <mapping path="/members/friendDetail/**" />
 	    <mapping path="/members/friend.do" />
 	    <mapping path="/email/**"/>
 	    <beans:ref bean="loginInterceptor" />

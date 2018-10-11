@@ -97,21 +97,38 @@ function daumZipCode() {
 			}).open();
 }
 </script>
-
+<style>
+#all:after {
+	width:100%;
+	height:100%;
+	z-index:-1;
+	position:fixed;
+	top:0;
+	left:0;
+	content:"";
+	background-repeat:repeat;
+	background-image: url('${path}/images/배경화면후보2.jpg');
+	background-size: cover;
+	opacity: 0.3!important; filter:alpha(opacity=30);	
+	background-position:center;
+	background-origin:content-box;
+}
+</style>
 <body>
 
 <%@ include file="../include/menu.jsp" %>
 
-
+<div id="all">
 <form name="form1" method="post" 
 enctype="multipart/form-data">
-<table style="align:center; border:3; bordercolor:white; bordercolorlight:gray; cellspacing:1; cellpadding:3; width: 30%; height: 50%; margin: 50px;">
+<table style="background-color:white; align:center; border:3; bordercolor:white; bordercolorlight:gray; cellspacing:1; cellpadding:3; width: 30%; height: 50%; margin: 50px;">
 <tr bgcolor=#ececec align=center>
   <td colspan=3>회원정보 수정</td>
 </tr>
          <tr >
                         <td bgcolor=#ececec align=center>아이디</td>
                         <td>
+                        <input type="hidden" name="userid" value="${dto.userid}">
 						${dto.userid}
 					    </td>
 					    <td> </td>
@@ -126,11 +143,11 @@ enctype="multipart/form-data">
 		</tr>
 		<tr>					
 							<td bgcolor=#ececec align=center>이름</td>
-							<td>${dto.name}
+							<td><input type="hidden" name="name" value="${dto.name}">${dto.name}
 		</tr>
 		<tr>					
                         <td bgcolor=#ececec align=center>성별</td>
-						<td>${dto.sex}</td>
+						<td><input type="hidden" name="sex" value="${dto.sex}">${dto.sex}</td>
                              <td> </td>
         </tr>                     
 						<!-- <span> 
@@ -176,6 +193,6 @@ enctype="multipart/form-data">
 		</tr>
 						</table>
 					</form>
-
+</div>
 </body>
 </html>

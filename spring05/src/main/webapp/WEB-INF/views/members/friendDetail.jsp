@@ -110,11 +110,26 @@ table > tbody > tr:hover > td {
 	background: linear-gradient(to bottom,  #f2f2f2 0%,#f0f0f0 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#f0f0f0',GradientType=0 ); /* IE6-9 */
 }
-
+#all:after {
+	width:100%;
+	height:100%;
+	z-index:-1;
+	position:fixed;
+	top:0;
+	left:0;
+	content:"";
+	background-repeat:repeat;
+	background-image: url('${path}/images/배경화면후보2.jpg');
+	background-size: cover;
+	opacity: 0.3!important; filter:alpha(opacity=30);	
+	background-position:center;
+	background-origin:content-box;
+}
 </style>
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
+<div id="all">
 <div align="center">
 <h2>회원정보</h2>
 </div>
@@ -156,6 +171,7 @@ table > tbody > tr:hover > td {
  </tr>
 </table>
 </form>
+</div>
 </div>
 </body>
 </html>

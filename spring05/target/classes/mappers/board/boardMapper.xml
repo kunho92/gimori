@@ -110,7 +110,7 @@ resultType="com.example.spring05.model.board.dto.BoardDTO">
 
     <!-- 게시물 삭제 -->
 	<delete id="delete">
-        <!-- delete from board where bno=#{bno} -->
+       delete from board where bno=#{bno}
 	</delete>
 	<delete id="boardDelete">
 	 delete from board where bno=#{bno}
